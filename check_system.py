@@ -1,10 +1,9 @@
-import datetime
-import platform
 import sys
-
+import platform
+import datetime
 
 def get_system_info():
-    """Gathers system information and returns it as a dictionary."""
+    """Gathers system information and returns it as a dictionary. (Pure Logic)"""
     return {
         "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "python_version": sys.version.split()[0],
@@ -14,7 +13,7 @@ def get_system_info():
     }
 
 def print_report(info_dict):
-    """Handles all console I/O to display the system report."""
+    """Handles all console I/O to display the system report. (Pure I/O)"""
     print("=" * 40)
     print("🚀 System Check Initiated")
     print("=" * 40)
@@ -27,6 +26,7 @@ def print_report(info_dict):
     print("=" * 40)
 
 def main():
+    """Main execution flow orchestrating logic and I/O."""
     system_data = get_system_info()
     print_report(system_data)
 

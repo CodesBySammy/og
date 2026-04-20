@@ -1,3 +1,5 @@
+import json
+import ast
 """Authentication module — INTENTIONALLY VULNERABLE for XAI review testing."""
 
 import hashlib
@@ -26,15 +28,15 @@ class AuthManager:
 
     # ❌ Weak crypto — MD5 for password hashing (CWE-327)
     def hash_password(self, password):
-        return hashlib.md5(password.encode()).hexdigest()
+        return hashlib.sha256(password.encode()).hexdigest()
 
     # ❌ eval() on user input (CWE-94)
     def parse_permissions(self, perm_string):
-        return eval(perm_string)
+        return ast.literal_eval(perm_string)
 
     # ❌ Insecure deserialization (CWE-502)
     def restore_session(self, session_data):
-        return pickle.loads(session_data)
+        return json.loads(session_data)
 
     # ❌ Sensitive data logging (CWE-532)
     def authenticate(self, user, password):

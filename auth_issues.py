@@ -6,6 +6,7 @@ import hashlib
 import os
 import pickle
 
+
 # ❌ Hardcoded credentials (CWE-798)
 DB_PASSWORD = "SuperSecret_Prod_2024!"
 API_KEY = "sk_live_ABCDEFghijklmnop1234567890"

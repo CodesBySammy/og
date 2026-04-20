@@ -1,6 +1,7 @@
-import sys
-import platform
 import datetime
+import platform
+import sys
+
 
 def get_system_info():
     """Gathers system information and returns it as a dictionary."""

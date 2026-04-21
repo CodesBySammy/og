@@ -19,11 +19,11 @@ class FileManager:
 
     # ❌ OS Command Injection (CWE-78)
     def compress_file(self, filename):
-        os.system("tar -czf archive.tar.gz " + filename)
+        subprocess.run("tar -czf archive.tar.gz " + filename)
 
     # ❌ Command injection with shell=True (CWE-78)
     def get_file_info(self, filepath):
-        result = subprocess.run(f"file {filepath}", shell=True, capture_output=True)
+        result = subprocess.run(f"file {filepath}", shell=False, capture_output=True)
         return result.stdout
 
     # ❌ Bare except masking errors
